@@ -340,7 +340,8 @@
 - (void)setThumbImage:(UIImage *)image
 {
     thumbImage = image;
-    thumbImageView.image = image;
+    if(self.on)
+        thumbImageView.image = image;
 }
 
 /*
@@ -444,6 +445,7 @@
             offImageView.alpha = 0;
 			self.onLabel.alpha = 1.0;
 			self.offLabel.alpha = 0;
+            thumbImageView.image = thumbImage;
         } completion:^(BOOL finished) {
             isAnimating = NO;
         }];
@@ -460,6 +462,7 @@
         offImageView.alpha = 0;
 		self.onLabel.alpha = 1.0;
 		self.offLabel.alpha = 0;
+        thumbImageView.image = thumbImage;
     }
     
     currentVisualValue = YES;
@@ -490,6 +493,7 @@
             offImageView.alpha = 1.0;
 			self.onLabel.alpha = 0;
 			self.offLabel.alpha = 1.0;
+            thumbImageView.image = nil;
         } completion:^(BOOL finished) {
             isAnimating = NO;
         }];
@@ -509,6 +513,7 @@
         offImageView.alpha = 1.0;
 		self.onLabel.alpha = 0;
 		self.offLabel.alpha = 1.0;
+        thumbImageView.image = nil;
     }
     
     currentVisualValue = NO;
